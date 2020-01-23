@@ -5,9 +5,9 @@ I am trying to build a simple, secure php mail contact form to integrate into ex
 
 This is a work in progress with many features I am planning on implementing.
 
-Right now, you can specify a webiste URL and an image location to send a nice formatted email (Screenshot below) with URL link goodness to your webiste wrapped right in. This can be configured easily in main kontact.mail.php file. 
+Right now, you can specify a webiste URL and an image location to send a nice formatted email (Screenshot below) with URL link goodness to your webiste wrapped right in. This can be configured easily in main kontact_mail.php file. 
 
-I did include within this script to try an determine the senders "TRUE" email address to email with message to easily copy/paste email address so one could add IP Address to blacklist with minimal effort or looking through logs if they are spammers to stop that unwanted behavior.
+I did include within this script to try and determine the senders "TRUE" IP address and email that to the recipient you chooe during configuration within the message to easily copy/paste that IP address so one could add it to blacklist with minimal effort or looking through logs if they are spammers to stop that unwanted behavior.
 
 Check it out, give feedback and help out if you would like.
 
