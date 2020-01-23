@@ -6,8 +6,11 @@ This is a work in progress with many features I am planning on implementing.
 Check it out, give feedback and help out if you would like.
 
 ***Wanted Features (ATPIT):***
+
 Multiple Choices for Captcha Options
+
 Skinable emails
+
 
 More ideas to come
 
