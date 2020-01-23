@@ -11,6 +11,10 @@ Multiple Choices for Captcha Options
 
 Skinable emails
 
+***Screenshot of Email***
+
+![Alt text](/images/screenshot_dar_blue.png?raw=true "Dark Blue Theme")
+
 
 More ideas to come
 
