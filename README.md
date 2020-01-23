@@ -5,6 +5,8 @@ I am trying to build a simple, secure php mail contact form to integrate into ex
 This is a work in progress with many features I am planning on implementing.
 Check it out, give feedback and help out if you would like.
 
+I did include the script to try an determine the senders "TRUE" email address to email with message to easily copy/paste email address and add to blacklist if they are spammers
+
 ***Wanted Features (ATPIT):***
 
 Multiple Choices for Captcha Options
