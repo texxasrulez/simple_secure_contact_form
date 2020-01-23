@@ -7,7 +7,7 @@ This is a work in progress with many features I am planning on implementing.
 
 Right now, you can specify a webiste URL and an image location to send a nice formatted email (Screenshot below) with URL link goodness to your webiste wrapped right in. This can be configured easily in main kontact_mail.php file. 
 
-I did include within this script to try and determine the senders "TRUE" IP address and email that to the recipient you chooe during configuration within the message to easily copy/paste that IP address so one could add it to blacklist with minimal effort or looking through logs if they are spammers to stop that unwanted behavior.
+I did include within this script to try and determine the senders "TRUE" IP address and email that to the recipient you choose during configuration within the message to easily copy/paste that IP address so one could add it to blacklist with minimal effort or looking through logs if they are spammers to stop that unwanted behavior.
 
 Check it out, give feedback and help out if you would like.
 
