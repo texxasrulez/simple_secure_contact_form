@@ -32,4 +32,4 @@ Installation is quite simple. Upload included files with file structure preserve
 
 ***Screenshot of Email***
 
-![Alt text](/images/screenshot_dar_blue.png?raw=true "Dark Blue Theme")
+![Alt text](/images/screenshot.png?raw=true "ScreenShot")
