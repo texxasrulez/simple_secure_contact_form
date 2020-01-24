@@ -33,3 +33,5 @@ Installation is quite simple. Upload included files with file structure preserve
 ***Screenshot of Email***
 
 ![Alt text](/images/screenshot.png?raw=true "ScreenShot")
+
+This is obviously an image that has been altered, but I put a Class C Private IP here just to show how the IP Address' are shown within email and not use a "REAL" IP Address. In my testing, this script has captured actual IP Addresses every time I have received SPAM, but still hasn't gotten Rhona Mitra to use my code... ;-)
