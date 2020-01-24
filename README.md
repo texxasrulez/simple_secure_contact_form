@@ -34,4 +34,4 @@ Installation is quite simple. Upload included files with file structure preserve
 
 ![Alt text](/images/screenshot.png?raw=true "ScreenShot")
 
-This is obviously an image that has been altered, but I put a Class C Private IP here just to show how the IP Address' are shown within email and not use a "REAL" IP Address. In my testing, this script has captured actual IP Addresses every time I have received SPAM, but still hasn't gotten Rhona Mitra to use my code... ;-)
+This is obviously an image that has been altered since Rhona Mitra does not email me, but I did paste a Class C Private IP address over the actual IP Address used to send this test message to acurately show how the actual email address looks for privacy reasons. In my testing, this script has captured actual IP Addresses every time I have received SPAM, but it still hasn't gotten Rhona Mitra to use my code and correspond with me... :-(
