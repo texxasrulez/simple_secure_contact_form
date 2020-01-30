@@ -27,7 +27,7 @@ Thank you and enjoy ...
 
 
 ***Installation***:
-Installation is quite simple. Upload included files with file structure preserved. Included .html pages should go to your webroot and edit those files accordingly to match your existing site look and feel. The files located in /kontact/ folder should upload into a folder named /kontact/ (I spelled it wrong on purpose) and edit kontact_mail.php file within the Configuration Section to suite your needs. You then need to add code, depending on your choice of Captcha, to your existing HTML page where the contact form is located. These code examples are more detailed within the kontact_mail.php file itself.
+Installation is quite simple. Upload included files with file structure preserved to the root of your webserver. Included .html pages should go to your webroot and edit those files accordingly to match your existing site look and feel. The files located in /kontact/ folder should upload into a folder named /kontact/ (I spelled it wrong on purpose) and edit kontact_mail.php file within the Configuration Section to suite your needs. You then need to add code, depending on your choice of Captcha, to your existing HTML page where the contact form is located. These code examples are more detailed within the kontact_mail.php file itself.
 
 
 ***Screenshot of Email***
