@@ -19,7 +19,7 @@ Multiple Choices for Captcha Options
 
 Custom Themed/Colored emails
 
-Ability to echo output messages to existing HTML pages for ease and confort.
+Ability to echo output messages to existing HTML pages for ease and comfort.
 
 More ideas to come
 
@@ -34,4 +34,10 @@ Installation is quite simple. Upload included files with file structure preserve
 
 ![Alt text](/images/screenshot.png?raw=true "ScreenShot")
 
-This is obviously an image that has been altered since Rhona Mitra does not email me, but I did paste a Class C Private IP address over the actual IP Address used to send this test message, for privacy reasons, to accuarately represent the look you should expect from stock script. In my testing, this script has captured actual IP Addresses every time I have received SPAM, but it still hasn't gotten Rhona Mitra to use my code and correspond with me... :-(
+This is obviously an image that has been altered since Rhona Mitra does not email me, but I did paste a Class C Private IP address over the actual IP Address used to send this test message, for privacy reasons, to accurately represent the look you should expect from stock script. In my testing, this script has captured actual IP Addresses every time I have received SPAM, but it still hasn't gotten Rhona Mitra to use my code and correspond with me... :-(
+
+:moneybag: **Donations** :moneybag:
+
+If you use this plugin and would like to show your appreciation by buying me a cup of coffee, I surely would appreciate it. A regular cup of Joe is sufficient, but a Starbucks Coffee would be better ... \
+Zelle (Zelle is integrated within many major banks Mobile Apps by default) - Just send to texxasrulez at yahoo dot com \
+No Zelle in your banks mobile app, no problem, just click [Paypal](https://paypal.me/texxasrulez?locale.x=en_US) and I can make a Starbucks run ...
