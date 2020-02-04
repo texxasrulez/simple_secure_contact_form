@@ -1,3 +1,5 @@
+# A Simple yet Secure Contact form
+
 ***Kontact PHP Mail Contact Form Mailer***
 
 I am trying to build a simple, secure php mail contact form to integrate into existing HTML page.
@@ -11,22 +13,19 @@ I did include within this script to try and determine the senders "TRUE" IP addr
 Check it out, give feedback and help out if you would like.
 
 
-***Wanted Features (ATPIT):***
+***Wanted Features (ATPIT):*** 
 
-Addition of config.inc.php file for easier customization.
-
-Multiple Choices for Captcha Options
-
-Custom Themed/Colored emails
-
-Ability to echo output messages to existing HTML pages for ease and comfort.
+* Addition of config.inc.php file for easier customization.
+* Multiple Choices for Captcha Options
+* Custom Themed/Colored emails
+* Ability to echo output messages to existing HTML pages for ease and comfort.
 
 More ideas to come
 
 Thank you and enjoy ... 
 
 
-***Installation***:
+***Installation***: \
 Installation is quite simple. Upload included files with file structure preserved to the root of your webserver. Included .html pages should go to your webroot and edit those files accordingly to match your existing site look and feel. The files located in /kontact/ folder should upload into a folder named /kontact/ (I spelled it wrong on purpose) and edit kontact_mail.php file within the Configuration Section to suite your needs. You then need to add code, depending on your choice of Captcha, to your existing HTML page where the contact form is located. These code examples are more detailed within the kontact_mail.php file itself.
 
 
@@ -34,7 +33,7 @@ Installation is quite simple. Upload included files with file structure preserve
 
 ![Alt text](/images/screenshot.png?raw=true "ScreenShot")
 
-This is obviously an image that has been altered since Rhona Mitra does not email me, but I did paste a Class C Private IP address over the actual IP Address used to send this test message, for privacy reasons, to accurately represent the look you should expect from stock script. In my testing, this script has captured actual IP Addresses every time I have received SPAM, but it still hasn't gotten Rhona Mitra to use my code and correspond with me... :-(
+This is obviously an image that has been altered since Rhona Mitra does not email me, but I did paste a Class C Private IP address over the actual IP Address used to send this test message, for privacy reasons, to accurately represent the look you should expect from stock script. In my testing, this script has captured actual IP Addresses every time I have received SPAM, but it still hasn't gotten Rhona Mitra to correspond with me... :-(
 
 :moneybag: **Donations** :moneybag:
 
