@@ -15,6 +15,7 @@ $site_url = 'https://www.yourdomain.com'; // Best practice is to use https:// an
 $site_logo = '/image_folder/image_name.png'; // Start with a backslash "/" IMPORTANT! - Upload your logo to appropriate directory
 
 // Add extra text after Website Name in Table Header. Use null; for nothing
+$form_title = '';
 $form_name = '';
 
 // Captcha Option - 'local'; 'google'; or null; (for no captcha) TODO for multiple choices - Google ReCaptcha is only choice right now
@@ -98,13 +99,15 @@ $headers = array (
 // Compose your HTML email message
 $message  = "<html><body>";
 $message .= "<table width=700px; style='border: 1px solid #153042;' cellpadding='10'>";
-$message .= "<tr style='color: white; background: #153042;'><td align='center' colspan='2' text-align:'bottom'><a href=".$site_url."><img src=". $site_url.$site_logo ." align='left' height=45%></a><font size='4'><strong>" . $site_name . " " . $form_name . "</strong></font></td></tr>";
+$message .= "<tr style='color: white; background: #153042;'><td align='center' colspan='2' text-align:'bottom'><a href=".$site_url."><img src=". $site_url.$site_logo ." align='left' height=45%></a><font size='4'><strong>" . $form_title . " " . $form_name . "</strong></font></td></tr>";
 $message .= "<tr style='background: #d0e4f5;'><td width=22%><strong>Name:</strong></td><td>" .clean_string($name) . "</td></tr>";
 $message .= "<tr style='background: #ecf4fb;'><td width=22%><strong>Email / IP Address: </strong></td><td>" .clean_string($email) . " <strong>/</strong> (<strong>" . $user_ip . "</strong>) " . "</td></tr>";
 $message .= "<tr style='background: #d0e4f5;'><td width=22%><strong><u>Subject</u>: </strong></td><td><strong><u>" .clean_string($subject) . "</u></strong></td></tr>";
 $message .= "<tr style='background: #ecf4fb;'><td width=22% valign='top'><strong>Message: </strong></td><td>" .clean_string($inquiry) . "</td></tr>";
 $message .= "<tr style='color: white; background: #153042;'><td align='right' colspan='2'><a href=". $site_url ." . style='color: white; text-decoration: none'>" . $site_name . "</a></td></tr>";
 $message .= "</table>";
+$message .= '<a href="https://www.paypal.me/texxasrulez"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></a>';
 $message .= "</body></html>";
 
 // Checking for email injection.
