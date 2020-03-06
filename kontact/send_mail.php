@@ -130,34 +130,31 @@ function isInjected($str) {
 	}
 }
 
+// Captcha Verification based on choice in Configuration Option in this file
+
+// Google Re Captcha Verification
+if ($verify->success) {
+
 // If the user tries to access this script directly, redirect them to the feedback form,
 if (!isset($_POST['email'])) {
 header( "Location: $error_page" );
 }
 
 // If the form fields are empty, redirect to the error page.
-elseif (empty($name) || empty($email)) {
+elseif (empty($name) || empty($email) || empty($subject) || empty($inquiry)) {
 header( "Location: $error_page" );
 }
 
-// If email injection is detected, redirect to the spammer page.
-elseif ( isInjected($email) || isInjected($name)  || isInjected($subject) ) {
+// If injection is detected, redirect to the spammer page.
+elseif ( isInjected($email) || isInjected($name)  || isInjected($subject)  || isInjected($inquiry) ) {
 header( "Location: $ruaspammer" );
 }
 
-
-// Captcha Verification based on choice in Configuration Option in this file
-
-// Google Re Captcha Verification
-if ($verify->success) {
-
 // If all previous tests passed, send the email then redirect to the thank you page.
 
-	if (mail($webmaster_email, $subject, $message, $headers)) {
+	elseif
+		(mail($webmaster_email, $subject, $message, $headers));
 	header( "Location: $thankyou_page" );
-	} else {
-		header( "Location: $error_page" );
-}
 }
 
 ?>
