@@ -15,8 +15,8 @@ $site_url = 'https://www.yourdomain.com'; // Best practice is to use https:// an
 $site_logo = '/image_folder/image_name.png'; // Start with a backslash "/" IMPORTANT! - Upload your logo to appropriate directory
 
 // Add extra text after Website Name in Table Header. Use null; for nothing
-$form_title = 'Visitor';
-$form_name = 'Inquiry';
+$form_title = 'Visitor'; // Change to whatever you like
+$form_name = 'Inquiry'; // Change to whatever you like
 
 // Captcha Option - 'local'; 'google'; or null; (for no captcha) TODO for multiple choices - Google ReCaptcha is only choice right now
 // $captcha_option = null;
