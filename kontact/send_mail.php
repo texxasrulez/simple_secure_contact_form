@@ -6,7 +6,7 @@ PHP Simple and Secure Contact Sendmail Script by Gene Hawkins
 
 // Begin Configuration - Easy Config in this section
 
-// Email Address to send message to
+// Admin Email Address to send message to
 $webmaster_email = 'change_to_your_email';
 
 // Show Website name and logo with URL link in Table Header and URL link in footer
@@ -14,9 +14,9 @@ $site_name = 'Site Name'; // Use your Site / Company Name here
 $site_url = 'https://www.yourdomain.com'; // Best practice is to use https:// and do not leave a trailing backslash "/" IMPORTANT!
 $site_logo = '/image_folder/image_name.png'; // Start with a backslash "/" IMPORTANT! - Upload your logo to appropriate directory
 
-// Add extra text after Website Name in Table Header. Use null; for nothing
-$form_title = 'Visitor'; // Change to whatever you like
-$form_name = 'Inquiry'; // Change to whatever you like
+// Add extra text after Website Name in Table Header.
+$form_title = 'Visitor'; // Whaterver you want
+$form_name = 'Inquiry'; // Whaterver you want
 
 // Captcha Option - 'local'; 'google'; or null; (for no captcha) TODO for multiple choices - Google ReCaptcha is only choice right now
 // $captcha_option = null;
@@ -36,9 +36,11 @@ $form_name = 'Inquiry'; // Change to whatever you like
 }
 */
 
-// Using Google Re Captcha - Go to https://www.google.com/recaptcha/admin/ to get your Keys to use this option
-// Place this line of code before </head> tag on your HTML page where your Contact Form is: <script src='https://www.google.com/recaptcha/api.js'></script>
-// Place this line of code in the body of the HTML page where you want your captcha box to be: <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+/*
+ Using Google Re Captcha - Go to https://www.google.com/recaptcha/admin/ to get your Keys to use this option
+ Place this line of code before </head> tag on your HTML page where your Contact Form is: <script src='https://www.google.com/recaptcha/api.js'></script>
+ Place this line of code in the body of the HTML page where you want your captcha box to be: <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+*/
 
 $secret = 'YOUR_OWN_SECRET_KEY'; // Change this to your secret key
 $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=".$_POST['g-recaptcha-response'];
@@ -68,12 +70,12 @@ $error_page    = "../error_message.html";
 $thankyou_page = "../thank_you.html";
 $ruaspammer    = "../spammer.html";
 
-// Loads the form field data from your contact page into variables as well as other usefull things.
+// Loads the form field data from your contact page into variables as well as other useful things.
 // If you add a form field, you will need to add it here.
-$email   = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-$inquiry = $_POST['message'] ;
 $name    = $_POST['name'] ;
+$email   = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 $subject = $_POST['subject'] ;
+$inquiry = $_POST['message'] ;
 $user_ip = getUserIP() ;
 $digest  = "md5=".base64_encode(hash("md5", $inquiry, true));
 $date    = date(DateTime::RFC822);
@@ -136,9 +138,9 @@ function isInjected($str) {
 // Google Re Captcha Verification
 if ($verify->success) {
 
-// If the user tries to access this script directly, redirect them to the feedback form,
+// If the user tries to access this script directly, redirect them to the contact form,
 if (!isset($_POST['email'])) {
-header( "Location: $error_page" );
+header( "Location: $feedback_page" );
 }
 
 // If the form fields are empty, redirect to the error page.
@@ -151,12 +153,13 @@ elseif ( isInjected($email) || isInjected($name)  || isInjected($subject)  || is
 header( "Location: $ruaspammer" );
 }
 
-// If all previous tests passed, send the email then redirect to the thank you page.
+// If all previous tests passed, send the email to webmaster then redirect to the thank you page.
 
 	else {
 		(mail($webmaster_email, $subject, $message, $headers));
 	header( "Location: $thankyou_page" );
 	}
-}
+	
+} // End Google Re Captcha Verification
 
 ?>
