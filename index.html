@@ -1,10 +1,11 @@
 Add to your HTML site where you want your Contact form (These are minimum requirements and as long as your Contact form's name, email, subject and message input types match what is shown below, it should work with no problems):
 
 							<form method="post" action="kontact/send_mail.php">
-										<input type="text" name="name" id="name" placeholder="Name" />
-										<input type="text" name="email" id="email" placeholder="Email" />
-										<input type="text" name="subject" id="subject" placeholder="Subject" />
-										<textarea name="message" id="message" placeholder="Message"></textarea>
+										<input type="text" name="name" id="name" placeholder="Name (Required)" />
+										<input type="text" name="email" id="email" placeholder="Email (Required)" />
+										<input type="text" name="subject" id="subject" placeholder="Subject (Required)" />
+										<textarea name="message" id="message" placeholder="Message (Required)"></textarea>
+										<div>All Fields are REQUIRED</div>
 										<ul>
 											<li><input type="submit" value="Send Message" /></li>
 											<li><input type="reset" value="Clear Form" class="alt" /></li>
