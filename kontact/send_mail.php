@@ -4,7 +4,7 @@
 PHP Simple and Secure Contact Sendmail Script by Gene Hawkins
 */
 
-// Configuration - Easy Config in this section
+// Begin Configuration - Easy Config in this section
 
 // Email Address to send message to
 $webmaster_email = 'change_to_your_email';
@@ -15,11 +15,11 @@ $site_url = 'https://www.yourdomain.com'; // Best practice is to use https:// an
 $site_logo = '/image_folder/image_name.png'; // Start with a backslash "/" IMPORTANT! - Upload your logo to appropriate directory
 
 // Add extra text after Website Name in Table Header. Use null; for nothing
-$form_title = '';
-$form_name = '';
+$form_title = 'Visitor';
+$form_name = 'Inquiry';
 
 // Captcha Option - 'local'; 'google'; or null; (for no captcha) TODO for multiple choices - Google ReCaptcha is only choice right now
-$captcha_option = '';
+// $captcha_option = null;
 
 // Using Local Captcha
 // Place code below before the Submit button on HTML page with Contact Form
@@ -39,6 +39,7 @@ $captcha_option = '';
 // Using Google Re Captcha - Go to https://www.google.com/recaptcha/admin/ to get your Keys to use this option
 // Place this line of code before </head> tag on your HTML page where your Contact Form is: <script src='https://www.google.com/recaptcha/api.js'></script>
 // Place this line of code in the body of the HTML page where you want your captcha box to be: <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+
 $secret = 'YOUR_OWN_SECRET_KEY'; // Change this to your secret key
 $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=".$_POST['g-recaptcha-response'];
 $verify = json_decode(file_get_contents($url));
@@ -152,9 +153,10 @@ header( "Location: $ruaspammer" );
 
 // If all previous tests passed, send the email then redirect to the thank you page.
 
-	elseif
+	else {
 		(mail($webmaster_email, $subject, $message, $headers));
 	header( "Location: $thankyou_page" );
+	}
 }
 
 ?>
