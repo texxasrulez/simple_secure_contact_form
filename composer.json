@@ -1,0 +1,15 @@
+{
+    "name": "texxasrulez/simple_secure_contact_form",
+    "type": "roundcube-plugin",
+    "description": "Display additional information for the current user and much more.",
+    "homepage": "https://github.com/texxasrulez/simple_secure_contact_form",
+    "license": "GPL-3.0-only",
+    "version": "3.3",
+    "authors": [
+        {
+            "name": "Gene Hawkins",
+            "email": "texxasrulez@yahoo.com",
+            "role": "Lead"
+        }
+    ]
+}
