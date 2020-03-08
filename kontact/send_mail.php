@@ -15,8 +15,8 @@ $site_url = 'https://www.yourdomain.com'; // Best practice is to use https:// an
 $site_logo = '/image_folder/image_name.png'; // Start with a backslash "/" IMPORTANT! - Upload your logo to appropriate directory
 
 // Add extra text after Website Name in Table Header.
-$form_title = 'Visitor'; // Whaterver you want
-$form_name = 'Inquiry'; // Whaterver you want
+$form_title = 'Visitor'; // Whatever you want
+$form_name = 'Inquiry'; // Whatever you want
 
 // Captcha Option - 'local'; 'google'; or null; (for no captcha) TODO for multiple choices - Google ReCaptcha is only choice right now
 // $captcha_option = null;
@@ -84,8 +84,6 @@ $date    = date(DateTime::RFC822);
 $headers = array (
 	'From' => $email,
 	'Reply-To' => $email,
-	'Return Path' => $email,
-	'Subject' => $subject,
 	'MIME-Version' => '1.0',
 	'Content-type' => 'text/html; charset=iso-8859-1',
 	'Date' => $date,
