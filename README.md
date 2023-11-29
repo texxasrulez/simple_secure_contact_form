@@ -14,9 +14,7 @@ Check it out, give feedback and help out if you would like.
 
 ***Wanted Features:***
 
-~~ * Addition of config.inc.php file for easier customization.
 * Multiple Choices for Captcha Options
-~~ * Custom Themed/Colored emails
 * Ability to echo output messages to existing HTML pages for ease and comfort.
 * Auto addition of Known Spammer IP Address to blacklist.
 
