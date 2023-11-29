@@ -14,9 +14,9 @@ Check it out, give feedback and help out if you would like.
 
 ***Wanted Features:***
 
-* Addition of config.inc.php file for easier customization.
+~~ * Addition of config.inc.php file for easier customization.
 * Multiple Choices for Captcha Options
-* Custom Themed/Colored emails
+~~ * Custom Themed/Colored emails
 * Ability to echo output messages to existing HTML pages for ease and comfort.
 * Auto addition of Known Spammer IP Address to blacklist.
 
@@ -25,7 +25,7 @@ More ideas to come
 Thank you and enjoy ... 
 
 ***Installation***: \
-Installation is quite simple. Upload included files with file structure preserved to the root of your webserver. Included .html pages should go to your webroot and edit those files accordingly to match your existing site look and feel. The files located in /kontact/ folder should upload into a folder named /kontact/ (I spelled it wrong on purpose) and edit send_mail.php file within the Configuration Section to suite your needs. You then need to add code, depending on your choice of Captcha, to your existing HTML page where the contact form is located. These code examples are more detailed within the send_mail.php file itself.
+Installation is quite simple. Create your database and import scheme located in SQL folder. Upload included files with file structure preserved to the root of your webserver. Included .html pages should go to your webroot and edit those files accordingly to match your existing site look and feel. The files located in /kontact/ folder should upload into a folder named /kontact/ (I spelled it wrong on purpose) and edit config.inc.php file within the Configuration Folder to suite your needs. You then need to add code, depending on your choice of Captcha, to your existing HTML page where the contact form is located. These code examples are more detailed within the send_mail.php file itself.
 
 ***Screenshot of Email***
 
