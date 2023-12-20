@@ -30,13 +30,13 @@ function getUserIP(){
 	
 // Create email headers
 $headers = array (
-	'From' 			=> $email,
-	'Reply-To' 		=> $email,
+	'From' 		=> $email,
+	'Reply-To' 	=> $email,
 	'MIME-Version' 	=> '1.0',
 	'Content-type' 	=> 'text/html; charset=iso-8859-1',
-	'Date' 			=> $date,
-	'Digest' 		=> $digest,
-	'X-Mailer' 		=> 'PHP Version '. phpversion()
+	'Date' 		=> $date,
+	'Digest' 	=> $digest,
+	'X-Mailer' 	=> 'PHP Version '. phpversion()
 	);
 
 // Check for bad things and then get rid of them
@@ -114,7 +114,6 @@ function isInjected($str) {
         $message = $_REQUEST['message'];
          
         // Performing insert query execution
-        // here our table name is college
         $sql = "INSERT INTO $db_table VALUES ('$name', '$subject', '$email', '$message', '$user_ip')";  
          
         if(mysqli_query($conn, $sql)){
