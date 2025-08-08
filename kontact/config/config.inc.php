@@ -1,62 +1,83 @@
 <?php
+// ===============================
+// Configuration File for Simple and Secure Contact Sendmail Script by Gene Hawkins
+// ===============================
 
-// Begin Configuration - Simple and Secure Contact Sendmail Configuration by Gene Hawkins
+// ===============================
+// Database Settings
+// ===============================
+$DATABASE_HOST 		= 'localhost';
+$DATABASE_USER 		= '';
+$DATABASE_PASS 		= '';
+$DATABASE_NAME 		= '';
+$DATABASE_TABLE 	= 'kontacts';
 
-// Admin Email Address to send message to
-	$webmaster_email = 'your_email';
+// ===============================
+// Recipient Email Addresses
+// Add more $recipient# as needed and update 'Assign User ID' section in send_mail.php
+// ===============================
+$recipient1 = 'email1@domain.net';
+$recipient2 = 'email2@domain.net';
+$recipient3 = 'email3@domain.net';
 
-// Show Website name and logo with URL link in Table Header and URL link in footer
-	$site_name = 'your_website title'; // Use your Site / Company Name here
-	$site_url = 'https://mydomain.net'; // Best practice is to use https:// and do not leave a trailing backslash "/" IMPORTANT!
-	$site_logo = '/images/kontact.png'; // Start with a backslash "/" IMPORTANT! - Upload your logo to appropriate directory
+// ===============================
+// Website Branding Settings
+// ===============================
+$site_name  = 'Domain.net';							// Company or site name
+$site_url   = 'https://domain.net';					// Full URL without trailing slash
+$site_logo  = '/assets/images/genesworld.png';		// Path to logo, starting with slash
 
-// Add extra text after Website Name in Table Header.
-	$form_title = 'Visitor'; // Whatever you want
-	$form_name = 'Inquiry'; // Whatever you want
+$form_title = 'Visitor';							// Extra text in header (e.g., "Visitor")
+$form_name  = 'Contact';							// Name of form (e.g., "Contact Form")
 
-// URLs of supporting pages.
-// If you add or change the names of any of the pages or their location, you will need to add/change here.
-	$feedback_page = "../../index.html";
-	$error_page    = "../../error_message.html";
-	$thankyou_page = "../../thank_you.html";
-	$ruaspammer    = "../../spammer.html";
+// ===============================
+// Supporting Page URLs
+// ===============================
+$feedback_page = "../../index.html";
+$error_page    = "../../error_message.html";
+$thankyou_page = "../../thank_you.html";
+$ruaspammer    = "../../spammer.html";
 
-// Captcha Option - 'local'; 'google'; or null; (for no captcha) TODO for multiple choices - Google ReCaptcha is only choice right now
-// $captcha_option = 'google';
+// ===============================
+// Captcha Settings
+// (Currently only Google reCAPTCHA supported)
+// ===============================
+$secret   = 'your_secret_key'; // Google reCAPTCHA secret key
+$grc_url  = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=" . $_POST['g-recaptcha-response'];
+$verify   = json_decode(file_get_contents($grc_url));
 
-// Using Local Captcha
-// Place code below before the Submit button on HTML page with Contact Form
-/*
-	<div class="elem-group">
-    <label for="captcha">Please Enter the Captcha Text</label>
-    <img src="captcha.php" alt="CAPTCHA" class="captcha-image"><i class="fas fa-redo refresh-captcha"></i>
-    <br>
-    <input type="text" id="captcha" name="captcha_challenge" pattern="[A-Z]{6}">
-	</div>
-	var refreshButton = document.querySelector(".refresh-captcha");
-	refreshButton.onclick = function() {
-	document.querySelector(".captcha-image").src = 'captcha.php?' + Date.now();
-}
-*/
+return [
+    'DATABASE_HOST'   => $DATABASE_HOST,
+    'DATABASE_USER'   => $DATABASE_USER,
+    'DATABASE_PASS'   => $DATABASE_PASS,
+    'DATABASE_NAME'   => $DATABASE_NAME,
+    'DATABASE_TABLE'  => $DATABASE_TABLE,
 
-/*
- Using Google Re Captcha - Go to https://www.google.com/recaptcha/admin/ to get your Keys to use this option
- Place this line of code before </head> tag on your HTML page where your Contact Form is: <script src='https://www.google.com/recaptcha/api.js'></script>
- Place this line of code in the body of the HTML page where you want your captcha box to be: <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
-*/
+    'recipient1'      => $recipient1,
+    'recipient2'      => $recipient2,
+    'recipient3'      => $recipient3,
 
-	$secret = 'your_secret_key_from_Google'; // Change this to your secret key
-	$url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=".$_POST['g-recaptcha-response'];
-	$verify = json_decode(file_get_contents($url));
+    'site_name'       => $site_name,
+    'site_url'        => $site_url,
+    'site_logo'       => $site_logo,
 
-// Customized Themes
-	$theme = 'blue'; // Valid choices so far = black, blue, green, teal, violet
+    'form_title'      => $form_title,
+    'form_name'       => $form_name,
 
-// Database Settings - Add your credentials here
-	$db_servername = 'localhost';
-	$db_username = 'DBusername';
-	$db_password = 'DBPassword';
-	$db_name = 'DBName';
-	$db_table = 'kontacts'; // Leave unless you renamed the table in your database
+    'feedback_page'   => $feedback_page,
+    'error_page'      => $error_page,
+    'thankyou_page'   => $thankyou_page,
+    'ruaspammer'      => $ruaspammer,
 
-?>
+    'secret'          => $secret,
+    'verify'          => $verify,
+
+// ===============================
+// Theme Selection (Numbered 1–21)
+//  1: Autumn  2: Black  3: Blue  4: Cyan  5: Dark  6: Gold  7: Green  8: Grey  9: High Contrast 10: Light
+//  11: Neon  12: Orange  13: Pink  14: Purple  15: Red  16: Teal  17: Violet 18: Colorful 19: Stylish 20: Dark Gradient
+//  21: Navy Blue Gradient
+// ===============================
+    'theme_choice'    => 19 // ← Change this number to select your desired theme (1–21)
+];
+

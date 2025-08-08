@@ -1,125 +1,168 @@
 <?php
-
 /*
-PHP Simple and Secure Contact Sendmail Script by Gene Hawkins
-*/
+ * PHP Simple and Secure Contact Sendmail Script by Gene Hawkins
+ * https://genesworld.net
+ */
 
+/*--------------------------------------------------------------
+ * Load Configuration
+ *------------------------------------------------------------*/
 $configs = include('config/config.inc.php');
 
-// Attempt to get Users Real IP Address
-function getUserIP(){
-     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {  // Check ip from shared internet
-       $ip=$_SERVER['HTTP_CLIENT_IP'];
-     } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  // Check ip is pass from proxy
-       $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-     } else {
-       $ip=$_SERVER['REMOTE_ADDR'];
-     }
-     return $ip;
-  }
+$DATABASE_HOST   = $configs['DATABASE_HOST'];
+$DATABASE_USER   = $configs['DATABASE_USER'];
+$DATABASE_PASS   = $configs['DATABASE_PASS'];
+$DATABASE_NAME   = $configs['DATABASE_NAME'];
+$DATABASE_TABLE  = $configs['DATABASE_TABLE'];
 
-// Loads the form field data from your contact page into variables as well as other useful things.
-// If you add a form field, you will need to add it here.
-	$name    = $_POST['name'];
-	$email   = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-	$subject = $_POST['subject'];
-	$inquiry = $_POST['message'];	
-	$user_ip = getUserIP();
-	$digest  = "md5=".base64_encode(hash("md5", $inquiry, true));
-	$date    = date(DateTime::RFC822);
-	
-// Create email headers
-$headers = array (
-	'From' 		=> $email,
-	'Reply-To' 	=> $email,
-	'MIME-Version' 	=> '1.0',
-	'Content-type' 	=> 'text/html; charset=iso-8859-1',
-	'Date' 		=> $date,
-	'Digest' 	=> $digest,
-	'X-Mailer' 	=> 'PHP Version '. phpversion()
-	);
+$recipient1      = $configs['recipient1'];
+$recipient2      = $configs['recipient2'];
+$recipient3      = $configs['recipient3'];
 
-// Check for bad things and then get rid of them
-    function clean_string($string) {
-      $bad = array("content-type","bcc:","to:","cc:","href");
-      return str_replace($bad,"",$string);
-    }
-	
-// Compose your HTML email message
-// Choose Theme color from themes directory
-include("themes/" . $theme . "_theme.php");
+$site_name       = $configs['site_name'];
+$site_url        = $configs['site_url'];
+$site_logo       = $configs['site_logo'];
 
-// Checking for email injection.
+$form_title      = $configs['form_title'];
+$form_name       = $configs['form_name'];
+
+$feedback_page   = $configs['feedback_page'];
+$error_page      = $configs['error_page'];
+$thankyou_page   = $configs['thankyou_page'];
+$ruaspammer      = $configs['ruaspammer'];
+
+$verify          = $configs['verify'];
+$theme_number    = $configs['theme_choice'] ?? 1;
+
+/*--------------------------------------------------------------
+ * Utility Functions
+ *------------------------------------------------------------*/
+function getUserIP() {
+    return $_SERVER['HTTP_CLIENT_IP']
+        ?? $_SERVER['HTTP_X_FORWARDED_FOR']
+        ?? $_SERVER['REMOTE_ADDR'];
+}
+
+function clean_string($string) {
+    $bad = ["content-type", "bcc:", "to:", "cc:", "href"];
+    return str_replace($bad, "", $string);
+}
+
 function isInjected($str) {
-	$injections = array('(\n+)',
-	'(\r+)',
-	'(\t+)',
-	'(%0A+)',
-	'(%0D+)',
-	'(%08+)',
-	'(%09+)'
-	);
-	$inject = join('|', $injections);
-	$inject = "/$inject/i";
-	if(preg_match($inject,$str)) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-	
-// Captcha Verification based on choice in Configuration Option in this file
-
-// Google Re Captcha Verification
-	if ($verify->success) {
-
-// If the user tries to access this script directly, redirect them to the contact form,
-	if (!isset($_POST['email'])) {
-		header( "Location: $feedback_page" );
+    $injections = ['(\n+)', '(\r+)', '(\t+)', '(%0A+)', '(%0D+)', '(%08+)', '(%09+)'];
+    return preg_match("/" . join('|', $injections) . "/i", $str);
 }
 
-// If the form fields are empty, redirect to the error page.
-	elseif (empty($name) || empty($email) || empty($subject) || empty($inquiry)) {
-		header( "Location: $error_page" );
+/*--------------------------------------------------------------
+ * Collect Form Data
+ *------------------------------------------------------------*/
+$recipient  = htmlspecialchars($_POST['recipient']);
+$name       = $_POST['name'];
+$email      = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+$subject    = $_POST['subject'];
+$inquiry    = $_POST['message'];
+$user_ip    = getUserIP();
+$digest     = "md5=" . base64_encode(hash("md5", $inquiry, true));
+$date       = date(DateTime::RFC822);
+
+/*--------------------------------------------------------------
+ * Assign User ID by Recipient
+ *------------------------------------------------------------*/
+$recipients = [
+    $recipient1 => 1,
+    $recipient2 => 2,
+    $recipient3 => 3
+];
+$user_id = $recipients[$recipient] ?? 0;
+
+/*--------------------------------------------------------------
+ * Compose Email Headers
+ *------------------------------------------------------------*/
+$headers  = "From: $email\r\n";
+$headers .= "Reply-To: $email\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+$headers .= "Date: $date\r\n";
+$headers .= "Digest: $digest\r\n";
+$headers .= "X-Mailer: PHP/" . phpversion();
+
+/*--------------------------------------------------------------
+ * Load HTML Email Theme
+ *------------------------------------------------------------*/
+$theme_files = [
+    1  => 'autumn_theme.php',
+    2  => 'black_theme.php',
+    3  => 'blue_theme.php',
+    4  => 'cyan_theme.php',
+    5  => 'dark_theme.php',
+    6  => 'gold_theme.php',
+    7  => 'green_theme.php',
+    8  => 'grey_theme.php',
+    9  => 'highcontrast_theme.php',
+    10 => 'light_theme.php',
+    11 => 'neon_theme.php',
+    12 => 'orange_theme.php',
+    13 => 'pink_theme.php',
+    14 => 'purple_theme.php',
+    15 => 'red_theme.php',
+    16 => 'teal_theme.php',
+    17 => 'violet_theme.php',
+    18 => 'colorful_theme.php',
+    19 => 'stylish_theme.php',
+    20 => 'dark_gradient_theme.php',
+    21 => 'navy_gradient_theme.php',
+];
+
+if (!array_key_exists($theme_number, $theme_files)) {
+    $theme_number = 3; // Fallback to blue
 }
 
-// If injection is detected, redirect to the spammer page.
-	elseif ( isInjected($email) || isInjected($name)  || isInjected($subject)  || isInjected($inquiry) ) {
-		header( "Location: $ruaspammer" );
-}
-	
-// If all previous tests passed, send the email to webmaster then redirect to the thank you page.
+include("themes/" . $theme_files[$theme_number]);
 
-	else {
-		(mail($webmaster_email, $subject, $message, $headers));
-	header( "Location: $thankyou_page" );
-	}
+/*--------------------------------------------------------------
+ * Save to Database
+ *------------------------------------------------------------*/
+$conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 
+if ($conn === false) {
+    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-// Database Section
-        $conn = mysqli_connect($db_servername, $db_username, $db_password, $db_name);
-         
-        // Check connection
-        if($conn === false){
-            die("ERROR: Could not connect. "
-                . mysqli_connect_error());
-        }
-         
-        // Taking values from the form
-        $name =  $_REQUEST['name'];
-        $subject = $_REQUEST['subject'];
-        $email =  $_REQUEST['email'];
-        $message = $_REQUEST['message'];
-         
-        // Performing insert query execution
-        $sql = "INSERT INTO $db_table VALUES ('$name', '$subject', '$email', '$message', '$user_ip')";  
-         
-        if(mysqli_query($conn, $sql)){
-            echo "Entries added!";
-        }
-         
-        // Close connection
-        mysqli_close($conn);
+$stmt = $conn->prepare("INSERT INTO $DATABASE_TABLE (user_id, name, subject, email, message, user_ip) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("isssss", $user_id, $name, $subject, $email, $inquiry, $user_ip);
+$stmt->execute();
+$stmt->close();
+mysqli_close($conn);
+
+/*--------------------------------------------------------------
+ * Spam Prevention / Validation
+ *------------------------------------------------------------*/
+
+// Google reCAPTCHA
+if (!$verify || !$verify->success) {
+    header("Location: $error_page");
+    exit;
+}
+
+// Basic checks
+if (!isset($_POST['email'])) {
+    header("Location: $feedback_page");
+    exit;
+} elseif (empty($name) || empty($email) || empty($subject) || empty($inquiry)) {
+    header("Location: $error_page");
+    exit;
+} elseif (isInjected($email) || isInjected($name) || isInjected($subject) || isInjected($inquiry)) {
+    header("Location: $ruaspammer");
+    exit;
+}
+
+/*--------------------------------------------------------------
+ * Send Email
+ *------------------------------------------------------------*/
+if (mail($recipient, $subject, $email_body, $headers)) {
+    header("Location: $thankyou_page");
+} else {
+    header("Location: $error_page");
+}
+exit;
 ?>
