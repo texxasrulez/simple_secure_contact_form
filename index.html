@@ -1,37 +1,19 @@
-Add to your HTML site where you want your Contact form (These are minimum requirements and as long as your Contact form's name, email, subject and message input types match what is shown below, it should work with no problems):
+<!-- in <head> -->
+<script src="tkontact/assets/js/multiple_recipients.js"></script>
 
-<form action="kontact/send_mail.php" method="post" >
-<input type="text" name="name" id="name" placeholder="Name (Required)" />
-<input type="text" name="email" id="email" placeholder="Email (Required)" />
-<input type="text" name="subject" id="subject" placeholder="Subject (Required)" />
-<textarea name="message" id="message" placeholder="Message (Required)"></textarea>
-<div>All Fields are REQUIRED</div>
-	<ul>
-		<li><input type="submit" value="Send Message" /></li>
-		<li><input type="reset" value="Clear Form" class="alt" /></li>
-	</ul>
-</div>
-<div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY_FROM_GOOGLE"></div>
-</div>
+<!-- in <body> -->
+<form action="tkontact/send_mail.php" method="post" id="kontact-form" novalidate>
+  <label for="recipient">Choose Recipient</label>
+  <select name="recipient" id="recipient" required></select>
+
+  <input type="text"   name="name"    id="name"    placeholder="Name (Required)"    required>
+  <input type="email"  name="email"   id="email"   placeholder="Email (Required)"   required>
+  <input type="text"   name="subject" id="subject" placeholder="Subject (Required)" required>
+  <textarea name="message" id="message" placeholder="Message (Required)" required></textarea>
+
+  <!-- Optional while testing: remove or keep, server will verify anyway -->
+  <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY_FROM_GOOGLE"></div>
+
+  <input type="submit" value="Send Message">
 </form>
-							
-This is for Multiple Recipients to Contact							
-							
-<form action="kontact/send_mail.php" method="post" >
-	<label for="recipient">Choose Recipient</label> 
-	<select name="recipient">
-		<option id="1" name="recipient" value="email1@yourdomain.com" name="user_id" value="1">First Person </option>
-		<option id="2" name="recipient" value="email2@yourdomain.com" name="user_id" value="2">Second Person </option>
-	</select>
-	<br>
-	<input type="text" required name="name" id="name" placeholder="Name (Required)" size="38"><br />
-	<input type="text" required name="email" id="email" placeholder="Email (Required)" size="38"><br />
-	<input type="text" required name="subject" id="subject" placeholder="Subject (Required)" size="38"><br /><br />
-	<textarea required name="message" id="message" placeholder="Message (Required)" rows="5" cols="41"></textarea><br />
-	<div>All Fields are REQUIRED</div>
-	<div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY_FROM_GOOGLE"></div>
-	<ul>
-		<input type="submit" name="submit" value="Send Message" />
-		<input type="reset" value="Clear Form" class="alt" /><br />
-	</ul>
-</form>
+
