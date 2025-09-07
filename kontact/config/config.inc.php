@@ -25,7 +25,7 @@ $recipient3 = 'email3@domain.net';
 // ===============================
 $site_name  = 'Domain.net';							// Company or site name
 $site_url   = 'https://domain.net';					// Full URL without trailing slash
-$site_logo  = '/assets/images/genesworld.png';		// Path to logo, starting with slash
+$site_logo  = '/assets/images/your_image.png';		// Path to logo, starting with slash
 
 $form_title = 'Visitor';							// Extra text in header (e.g., "Visitor")
 $form_name  = 'Contact';							// Name of form (e.g., "Contact Form")
