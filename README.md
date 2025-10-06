@@ -1,5 +1,12 @@
 # A Simple yet Secure Contact form
 
+[![Packagist](https://img.shields.io/packagist/dt/texxasrulez/simple_secure_contact_form?style=flat-square)](https://packagist.org/packages/texxasrulez/simple_secure_contact_form)
+[![Packagist Version](https://img.shields.io/packagist/v/texxasrulez/simple_secure_contact_form?style=flat-square)](https://packagist.org/packages/texxasrulez/simple_secure_contact_form)
+[![Project license](https://img.shields.io/github/license/texxasrulez/simple_secure_contact_form?style=flat-square)](https://github.com/texxasrulez/simple_secure_contact_form/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/texxasrulez/simple_secure_contact_form?style=flat-square&logo=github)](https://github.com/texxasrulez/simple_secure_contact_form/stargazers)
+[![issues](https://img.shields.io/github/issues/texxasrulez/simple_secure_contact_form)](https://github.com/texxasrulez/simple_secure_contact_form/issues)
+[![Donate to this project using Paypal](https://img.shields.io/badge/paypal-donate-blue.svg?style=flat-square&logo=paypal)](https://www.paypal.me/texxasrulez)
+
 ***Kontact PHP Mail Contact Form Mailer***
 
 I am trying to build a simple, secure php mail contact form to integrate into existing HTML page.
