@@ -4,7 +4,7 @@
 [![Packagist Version](https://img.shields.io/packagist/v/texxasrulez/simple_secure_contact_form?style=plastic&logo=packagist&logoColor=white)](https://packagist.org/packages/texxasrulez/simple_secure_contact_form)
 [![Project license](https://img.shields.io/github/license/texxasrulez/simple_secure_contact_form?style=plastic)](https://github.com/texxasrulez/simple_secure_contact_form/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/texxasrulez/simple_secure_contact_form?style=plastic&logo=github)](https://github.com/texxasrulez/simple_secure_contact_form/stargazers)
-[![issues](https://img.shields.io/github/issues/texxasrulez/simple_secure_contact_form)](https://github.com/texxasrulez/simple_secure_contact_form/issues)
+[![issues](https://img.shields.io/github/issues/texxasrulez/simple_secure_contact_form?style=plastic)](https://github.com/texxasrulez/simple_secure_contact_form/issues)
 [![Donate to this project using Paypal](https://img.shields.io/badge/paypal-donate-blue.svg?style=plastic&logo=paypal)](https://www.paypal.me/texxasrulez)
 
 ***Kontact PHP Mail Contact Form Mailer***
